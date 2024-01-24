@@ -1,8 +1,11 @@
 {
-  "name": "Api",
+  "name": "CardapioDigitalApi",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
   "devDependencies": {
     "typescript": "^5.3.3"
   }
