@@ -8,8 +8,9 @@ export async function createCategory(req: Request, res: Response) {
 
     const category = await Category.create({ name, icon });
 
-    return res.json(category);
-  } catch  {
+    return res.status(201).json(category);
+  } catch (error) {
+    console.log(error);
     return res.status(400).json({ error: 'Algo deu errado' });
   }
 }
