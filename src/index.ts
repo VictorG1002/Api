@@ -2,18 +2,21 @@ import express from 'express';
 
 import mongoose from 'mongoose';
 
-mongoose.connect('mongodb://localhost:27017').then(() => {
+import { router } from './router';
 
-  console.log('MongoDB connected');
+mongoose
+  .connect('mongodb://localhost:27017')
+  .then(() => {
+    const app = express();
+    const port = 3002;
 
-  const app = express();
+    app.use(express.json());
+    app.use(router);
 
-  const port = 3002;
+    console.log('MongoDB connected');
 
-  app.listen(port, () => {
-    console.log(`Server is running 👺 on http://localhost:${port}`);
-  });
-
-}).catch((err) => console.log(err));
-
-
+    app.listen(port, () => {
+      console.log(`Server is running 👺 on http://localhost:${port}`);
+    });
+  })
+  .catch((err) => console.log(err));
